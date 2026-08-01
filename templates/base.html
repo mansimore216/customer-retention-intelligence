@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Customer Churn Prediction & Retention Intelligence{% endblock %}</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/style.css') }}">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@4.4.4/dist/chart.umd.min.js"></script>
+    {% block head %}{% endblock %}
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar">
+            <div class="sidebar-brand">
+                <div class="brand-mark">CP</div>
+                <div class="brand-text">
+                    <span class="brand-title">Churn Prediction</span>
+                    <span class="brand-subtitle">&amp; Retention Intelligence</span>
+                </div>
+            </div>
+            <nav class="sidebar-nav">
+                <a href="{{ url_for('index') }}" class="nav-item {% if request.path == '/' %}active{% endif %}">
+                    <span class="nav-icon">&#9673;</span> Dashboard
+                </a>
+                <a href="{{ url_for('predict_page') }}" class="nav-item {% if request.path == '/predict' %}active{% endif %}">
+                    <span class="nav-icon">&#9737;</span> Predict Churn
+                </a>
+                <a href="{{ url_for('insights_page') }}" class="nav-item {% if request.path == '/insights' %}active{% endif %}">
+                    <span class="nav-icon">&#9776;</span> Customer Insights
+                </a>
+            </nav>
+            <div class="sidebar-footer">
+                <span class="footer-label">Final-Year AI/ML Project</span>
+            </div>
+        </aside>
+
+        <main class="main-content">
+            <header class="page-header">
+                <div>
+                    <h1 class="page-title">{% block page_title %}Customer Churn Prediction &amp; Retention Intelligence{% endblock %}</h1>
+                    <p class="page-subtitle">{% block page_subtitle %}Predict churn risk, understand why, and get retention actions{% endblock %}</p>
+                </div>
+                <div class="header-status" id="apiHealthBadge">
+                    <span class="status-dot"></span>
+                    <span class="status-text">Checking system status&hellip;</span>
+                </div>
+            </header>
+
+            <div class="page-body">
+                {% block content %}{% endblock %}
+            </div>
+        </main>
+    </div>
+
+    <script>
+        // Shared across all pages: system health indicator in the header.
+        (function () {
+            const badge = document.getElementById('apiHealthBadge');
+            if (!badge) return;
+            const dot = badge.querySelector('.status-dot');
+            const text = badge.querySelector('.status-text');
+
+            fetch('/api/health')
+                .then((res) => res.json())
+                .then((data) => {
+                    if (data.status === 'ok') {
+                        dot.classList.add('status-ok');
+                        text.textContent = 'Model Online';
+                    } else {
+                        dot.classList.add('status-error');
+                        text.textContent = data.detail ? `Model Error: ${data.detail}` : 'Model Issue Detected';
+                    }
+                })
+                .catch(() => {
+                    dot.classList.add('status-error');
+                    text.textContent = 'Backend Unreachable';
+                });
+        })();
+    </script>
+    {% block scripts %}{% endblock %}
+</body>
+</html>

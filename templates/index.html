@@ -1,0 +1,56 @@
+{% extends "base.html" %}
+
+{% block title %}Dashboard | Customer Churn Prediction & Retention Intelligence{% endblock %}
+{% block page_title %}Customer Churn Prediction &amp; Retention Intelligence{% endblock %}
+{% block page_subtitle %}An AI system that predicts which customers are likely to leave, explains why, and recommends how to keep them{% endblock %}
+
+{% block content %}
+<section class="intro-panel">
+    <p>
+        This dashboard is powered by a tuned <strong>XGBoost</strong> classifier trained on the Telco
+        Customer Churn dataset. Head to <strong>Predict Churn</strong> to score an individual customer with a
+        full explanation and retention plan, or <strong>Customer Insights</strong> to explore churn patterns
+        across the whole customer base.
+    </p>
+</section>
+
+<section class="kpi-grid" id="kpiGrid">
+    <div class="kpi-card">
+        <div class="kpi-label">Total Customers</div>
+        <div class="kpi-value skeleton" id="kpiTotalCustomers">&nbsp;</div>
+    </div>
+    <div class="kpi-card kpi-card-risk-high">
+        <div class="kpi-label">High-Risk Customers</div>
+        <div class="kpi-value skeleton" id="kpiHighRisk">&nbsp;</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Average Churn Probability</div>
+        <div class="kpi-value skeleton" id="kpiAvgChurn">&nbsp;</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Retention Opportunities</div>
+        <div class="kpi-value skeleton" id="kpiRetentionOpportunities">&nbsp;</div>
+    </div>
+</section>
+
+<section class="card-grid">
+    <div class="chart-card">
+        <h3>Risk Level Distribution</h3>
+        <div class="chart-body"><canvas id="riskDistributionChart"></canvas></div>
+    </div>
+    <div class="panel-card">
+        <h3>What this platform does</h3>
+        <ul class="feature-list">
+            <li><strong>Predict</strong> &mdash; enter a customer's profile and get a churn Yes/No call with a probability score.</li>
+            <li><strong>Explain</strong> &mdash; SHAP-based explainability shows exactly which factors are driving that customer's risk up or down.</li>
+            <li><strong>Recommend</strong> &mdash; rule-based retention actions tailored to each customer's top risk drivers.</li>
+            <li><strong>Analyze</strong> &mdash; dataset-wide churn patterns by contract, tenure, billing and service type.</li>
+        </ul>
+        <a class="cta-button" href="{{ url_for('predict_page') }}">Predict a customer&rsquo;s churn risk &rarr;</a>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dashboard.js') }}"></script>
+{% endblock %}

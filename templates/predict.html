@@ -1,0 +1,34 @@
+{% extends "base.html" %}
+
+{% block title %}Predict Churn | Customer Churn Prediction & Retention Intelligence{% endblock %}
+{% block page_title %}Predict Customer Churn{% endblock %}
+{% block page_subtitle %}Enter a customer's profile to get a churn prediction, explanation and retention plan{% endblock %}
+
+{% block content %}
+<div class="predict-layout">
+    <form id="predictForm" class="predict-form" novalidate>
+        <div id="formSections" class="form-sections">
+            <div class="loading-state">Loading form&hellip;</div>
+        </div>
+
+        <div class="form-actions">
+            <span class="form-error" id="formError"></span>
+            <button type="submit" class="predict-button" id="predictButton">
+                <span class="button-label">Predict Churn Risk</span>
+                <span class="button-spinner" aria-hidden="true"></span>
+            </button>
+        </div>
+    </form>
+
+    <div class="predict-results" id="predictResults">
+        <div class="empty-state">
+            <strong>No prediction yet</strong>
+            <span>Fill in the customer profile and click &ldquo;Predict Churn Risk&rdquo; to see the result here.</span>
+        </div>
+    </div>
+</div>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/predict.js') }}"></script>
+{% endblock %}

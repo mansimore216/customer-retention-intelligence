@@ -1,0 +1,57 @@
+{% extends "base.html" %}
+
+{% block title %}Customer Insights | Customer Churn Prediction & Retention Intelligence{% endblock %}
+{% block page_title %}Customer Insights{% endblock %}
+{% block page_subtitle %}Churn patterns across the customer base - contract type, tenure, billing and services{% endblock %}
+
+{% block content %}
+<section class="kpi-grid" id="insightsKpiGrid">
+    <div class="kpi-card">
+        <div class="kpi-label">Total Customers</div>
+        <div class="kpi-value skeleton" id="insTotalCustomers">&nbsp;</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Churned</div>
+        <div class="kpi-value skeleton" id="insChurned">&nbsp;</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Retained</div>
+        <div class="kpi-value skeleton" id="insRetained">&nbsp;</div>
+    </div>
+    <div class="kpi-card">
+        <div class="kpi-label">Overall Churn Rate</div>
+        <div class="kpi-value skeleton" id="insChurnRate">&nbsp;</div>
+    </div>
+</section>
+
+<section class="card-grid">
+    <div class="chart-card">
+        <h3>Churn Distribution</h3>
+        <div class="chart-body"><canvas id="churnDistributionChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+        <h3>Churn Rate by Contract Type</h3>
+        <div class="chart-body"><canvas id="contractChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+        <h3>Churn Rate by Tenure Group</h3>
+        <div class="chart-body"><canvas id="tenureChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+        <h3>Churn Rate by Monthly Charges</h3>
+        <div class="chart-body"><canvas id="chargesChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+        <h3>Churn Rate by Internet Service</h3>
+        <div class="chart-body"><canvas id="internetChart"></canvas></div>
+    </div>
+    <div class="chart-card">
+        <h3>Churn Rate by Payment Method</h3>
+        <div class="chart-body"><canvas id="paymentChart"></canvas></div>
+    </div>
+</section>
+{% endblock %}
+
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/insights.js') }}"></script>
+{% endblock %}
