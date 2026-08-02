@@ -624,31 +624,7 @@ The API handles common invalid requests, including:
 * Invalid or non-JSON request bodies
 * Unknown routes
 
----
 
-## 📸 Screenshots
-
-Add screenshots of the application here after running the project.
-
-### Dashboard
-
-![Dashboard Screenshot](screenshots/dashboard.png)
-
-### Churn Prediction
-
-![Prediction Screenshot](screenshots/prediction.png)
-
-### SHAP Explainability & Recommendations
-
-![Explainability Screenshot](screenshots/explainability.png)
-
-### Customer Insights
-
-![Insights Screenshot](screenshots/insights.png)
-
-> Create a `screenshots/` folder in the repository and add your actual screenshots before pushing this README.
-
----
 
 ## 💼 Business Value
 
