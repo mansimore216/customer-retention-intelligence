@@ -5,6 +5,11 @@ An end-to-end **AI-powered customer retention intelligence platform** that predi
 Built using a trained **XGBoost classification model** and the **Telco Customer Churn dataset**, the application provides both **individual customer-level churn prediction** and **dataset-level retention analytics** through a professional Flask web dashboard.
 
 ---
+## 🚀 Live Demo
+
+🌐 **Try the deployed application:** [Customer Churn Prediction & Retention Intelligence](https://customer-retention-intelligence-m6lf.onrender.com/)
+
+> Explore the dashboard, predict individual customer churn risk, view SHAP-based explanations, and get retention recommendations.
 
 ## 🚀 Overview
 
